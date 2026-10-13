@@ -1,0 +1,830 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mohab Abdullatif | Computer & AI Engineer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #0a0a0a;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 8%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #7c5cff;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #aaa;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+
+            padding: 120px 8% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: #5b3fd4;
+            filter: blur(180px);
+            opacity: 0.18;
+            top: 10%;
+            right: 5%;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 7px 14px;
+            border: 1px solid #292929;
+            border-radius: 30px;
+            color: #aaa;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(50px, 8vw, 95px);
+            line-height: 0.95;
+            letter-spacing: -5px;
+            margin-bottom: 30px;
+        }
+
+        h1 span {
+            color: #7c5cff;
+        }
+
+        .hero p {
+            color: #aaa;
+            max-width: 650px;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: #7c5cff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #6847e8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 1px solid #333;
+            color: #ddd;
+        }
+
+        .btn-secondary:hover {
+            background: #151515;
+        }
+
+        /* GENERAL */
+        section {
+            padding: 110px 8%;
+        }
+
+        .section-title {
+            margin-bottom: 55px;
+        }
+
+        .section-title p {
+            color: #7c5cff;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            letter-spacing: -2px;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+        }
+
+        .about-text {
+            color: #aaa;
+            font-size: 17px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .education-card {
+            border: 1px solid #252525;
+            background: #101010;
+            padding: 30px;
+            border-radius: 14px;
+        }
+
+        .education-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .education-card p {
+            color: #888;
+        }
+
+        .education-card .date {
+            color: #7c5cff;
+            font-size: 13px;
+            margin-top: 15px;
+        }
+
+        /* SKILLS */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            border: 1px solid #292929;
+            background: #111;
+            padding: 10px 16px;
+            border-radius: 8px;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        /* PROJECTS */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .project {
+            border: 1px solid #252525;
+            background: #101010;
+            border-radius: 14px;
+            padding: 30px;
+            transition: 0.25s;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            border-color: #4b3a87;
+        }
+
+        .project-number {
+            color: #7c5cff;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .project h3 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .project p {
+            color: #888;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .tech span {
+            background: #191919;
+            color: #aaa;
+            padding: 5px 9px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        /* EXPERIENCE */
+        .timeline {
+            max-width: 800px;
+        }
+
+        .timeline-item {
+            border-left: 1px solid #333;
+            padding: 0 0 40px 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: 5px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #7c5cff;
+        }
+
+        .timeline-item .date {
+            color: #7c5cff;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item h3 {
+            margin-bottom: 5px;
+        }
+
+        .timeline-item p {
+            color: #888;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .contact h2 {
+            font-size: 55px;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            border: 1px solid #292929;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: #bbb;
+            transition: 0.2s;
+        }
+
+        .contact-link:hover {
+            background: #151515;
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 30px 8%;
+            border-top: 1px solid #1d1d1d;
+            color: #666;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav ul li:nth-child(3) {
+                display: none;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .hero {
+                padding: 120px 5% 80px;
+            }
+
+            h1 {
+                letter-spacing: -3px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .contact h2 {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#" class="logo">M<span>.</span></a>
+
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="tag">
+                Computer & AI Engineering Student
+            </div>
+
+            <h1>
+                Hi, I'm <span>Mohab.</span>
+            </h1>
+
+            <p>
+                I'm a Computer and Artificial Intelligence Engineering student
+                interested in artificial intelligence, software development,
+                cloud technologies, and building practical systems.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn btn-primary">
+                    View My Work
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    Contact Me
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="section-title">
+            <p>01 / About</p>
+            <h2>A little about me.</h2>
+        </div>
+
+        <div class="about">
+
+            <div class="about-text">
+
+                <p>
+                    I'm a third-year Computer and Artificial Intelligence
+                    Engineering student with a strong interest in AI and
+                    software engineering.
+                </p>
+
+                <p>
+                    I enjoy understanding how systems work from the ground up
+                    and turning what I learn into practical projects.
+                    My interests currently span machine learning, backend
+                    development, cloud computing, and AI-powered applications.
+                </p>
+
+                <p>
+                    I'm continuously expanding my technical skills through
+                    university coursework, personal projects, and hands-on
+                    experimentation.
+                </p>
+
+            </div>
+
+            <div class="education-card">
+
+                <h3>Ain Shams University</h3>
+
+                <p>
+                    Bachelor of Engineering
+                    <br>
+                    Computer & Artificial Intelligence Engineering
+                </p>
+
+                <div class="date">
+                    2024 — 2028
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+        <div class="section-title">
+            <p>02 / Skills</p>
+            <h2>What I work with.</h2>
+        </div>
+
+        <div class="skills">
+
+            <div class="skill">Python</div>
+            <div class="skill">C++</div>
+            <div class="skill">Java</div>
+            <div class="skill">FastAPI</div>
+            <div class="skill">REST APIs</div>
+            <div class="skill">PostgreSQL</div>
+            <div class="skill">SQL</div>
+            <div class="skill">Git</div>
+            <div class="skill">GitHub</div>
+            <div class="skill">Docker</div>
+            <div class="skill">GitHub Actions</div>
+            <div class="skill">AWS</div>
+            <div class="skill">Machine Learning</div>
+            <div class="skill">PyTorch</div>
+            <div class="skill">Computer Vision</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+        <div class="section-title">
+            <p>03 / Projects</p>
+            <h2>Things I've built.</h2>
+        </div>
+
+        <div class="projects">
+
+            <!-- PROJECT 1 -->
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <h3>Scene Style Classification</h3>
+
+                <p>
+                    A computer vision project that classifies indoor room
+                    images into 17 different interior design styles using
+                    convolutional neural networks.
+                </p>
+
+                <div class="tech">
+                    <span>Python</span>
+                    <span>PyTorch</span>
+                    <span>CNN</span>
+                    <span>Computer Vision</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 2 -->
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 02
+                </div>
+
+                <h3>Production REST API</h3>
+
+                <p>
+                    Backend REST API featuring authentication, database
+                    integration, containerization, and automated CI/CD.
+                </p>
+
+                <div class="tech">
+                    <span>FastAPI</span>
+                    <span>PostgreSQL</span>
+                    <span>JWT</span>
+                    <span>Docker</span>
+                    <span>GitHub Actions</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 3 -->
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 03
+                </div>
+
+                <h3>Travel Booking System</h3>
+
+                <p>
+                    A desktop travel booking application supporting flights,
+                    hotels, and car rentals with a Java backend and JavaFX
+                    interface.
+                </p>
+
+                <div class="tech">
+                    <span>Java</span>
+                    <span>JavaFX</span>
+                    <span>Scene Builder</span>
+                    <span>SQL</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 4 -->
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 04
+                </div>
+
+                <h3>Event Management System</h3>
+
+                <p>
+                    A Java-based event management application designed to
+                    demonstrate object-oriented programming and system design.
+                </p>
+
+                <div class="tech">
+                    <span>Java</span>
+                    <span>OOP</span>
+                    <span>Data Structures</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 5 -->
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 05
+                </div>
+
+                <h3>Logic Design Projects</h3>
+
+                <p>
+                    Digital logic implementations including a binary adder
+                    using multiplexers and switches and a binary comparator.
+                </p>
+
+                <div class="tech">
+                    <span>Digital Logic</span>
+                    <span>Logic Gates</span>
+                    <span>Multiplexers</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 6 -->
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 06
+                </div>
+
+                <h3>Red-Black Tree Game</h3>
+
+                <p>
+                    An interactive C++ puzzle game built around Red-Black Tree
+                    operations, balancing, validation, and different
+                    difficulty levels.
+                </p>
+
+                <div class="tech">
+                    <span>C++</span>
+                    <span>Qt</span>
+                    <span>Data Structures</span>
+                    <span>CMake</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXPERIENCE / CERTIFICATIONS -->
+    <section>
+
+        <div class="section-title">
+            <p>04 / Background</p>
+            <h2>Experience & Learning.</h2>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <div class="date">
+                    2026 — Present
+                </div>
+
+                <h3>Computer & AI Engineering</h3>
+
+                <p>
+                    Developing skills across artificial intelligence,
+                    machine learning, software engineering, algorithms,
+                    and computer systems.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="date">
+                    Certification
+                </div>
+
+                <h3>AWS Certified Cloud Practitioner</h3>
+
+                <p>
+                    Foundational knowledge of AWS cloud concepts,
+                    infrastructure, security, pricing, and core services.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="date">
+                    Coursework
+                </div>
+
+                <h3>Computer Science Foundations</h3>
+
+                <p>
+                    Data Structures, Object-Oriented Programming, Computer
+                    Organization, Logic Design, Mathematics, and Physics.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <div class="contact">
+
+            <div class="section-title">
+                <p>05 / Contact</p>
+            </div>
+
+            <h2>Let's build something.</h2>
+
+            <p>
+                Interested in working together, discussing AI, or just
+                connecting? Feel free to reach out.
+            </p>
+
+            <div class="contact-links">
+
+                <a
+                    class="contact-link"
+                    href="mailto:your.email@example.com"
+                >
+                    Email
+                </a>
+
+                <a
+                    class="contact-link"
+                    href="https://github.com/"
+                    target="_blank"
+                >
+                    GitHub
+                </a>
+
+                <a
+                    class="contact-link"
+                    href="https://www.linkedin.com/"
+                    target="_blank"
+                >
+                    LinkedIn
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Mohab Abdullatif. Built from scratch.
+    </footer>
+
+</body>
+</html>
+```
